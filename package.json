@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build": "eas build -p android --profile production",
+    "build": "eas build -p android --profile preview",
     "production": "eas build -p android"
   },
   "dependencies": {

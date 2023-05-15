@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "laundry-mobile",
-    "slug": "laundry-mobile",
-    "version": "1.0.0",
+    "name": "Laundry Mobile",
+    "slug": "Laundry Mobile",
+    "version": "1.2.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

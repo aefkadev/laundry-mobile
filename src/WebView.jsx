@@ -39,21 +39,24 @@ const WebViewMain = () => {
         };
     }, [handleBackButton]);
 
-    const handleWebViewNavigationStateChange = (newState) => {
+    const handleShouldStartLoadWithRequest = (request) => {
+        const { url } = request;
         const whatsappURL = 'https://wa.me/';
         const whatsappMobile = 'whatsapp://';
-
-        if (newState.url.startsWith(whatsappURL)) {
-            // Redirect to the WhatsApp URL
-            Linking.openURL(newState.url);
-            return;
-        } else if (newState.url.startsWith(whatsappMobile)) {
-            // Redirect to the WhatsApp Mobile URL
-            Linking.openURL(newState.url);
-            return;
+    
+        if (url.startsWith(whatsappURL) || url.startsWith(whatsappMobile)) {
+            Linking.openURL(url).then(() => null).catch(() => null);
+            return false; // Prevent WebView from loading the URL
         }
-        setCanGoBack(newState.canGoBack);
+    
+        return true; // Allow WebView to load the URL
     };
+
+    const handleWebViewNavigationStateChange = useCallback(
+        (newState) => {
+            setCanGoBack(newState.canGoBack);
+        },[]
+    );
 
     return (
         <SafeAreaView style={styles.container}>
@@ -77,6 +80,7 @@ const WebViewMain = () => {
                 domStorageEnabled={true}
                 startInLoadingState={true}
                 onMessage={(event) => watchWebViewMessage(JSON.parse(event.nativeEvent.data))}
+                onShouldStartLoadWithRequest={handleShouldStartLoadWithRequest}
                 onNavigationStateChange={handleWebViewNavigationStateChange}
             />
             </View>

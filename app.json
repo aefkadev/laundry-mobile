@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ayufg.laundry"
+      "package": "com.react.laundry"
     },
     "web": {
       "favicon": "./assets/favicon.png"

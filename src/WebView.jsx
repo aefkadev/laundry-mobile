@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { WebView } from 'react-native-webview';
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { RefreshControl, SafeAreaView, ScrollView, StyleSheet, View, BackHandler, ToastAndroid, Linking } from 'react-native';
-import appConfig from '../app.conf.js';
+import { RefreshControl, SafeAreaView, ScrollView, StyleSheet, View, BackHandler, Linking } from 'react-native';
+import appConfig from '../config/app.conf.js';
 
 const WebViewMain = () => {
     const webViewRef = useRef();
